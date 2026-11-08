@@ -32,16 +32,11 @@ export default function TimelineCard({ entry }: { entry: Entry }) {
           <p className="entry-date">{entry.date}</p>
         </div>
       </div>
-      <details className="entry-details">
-        <summary>
-          More details<span aria-hidden="true">+</span>
-        </summary>
-        <ul>
-          {entry.details.map((detail) => (
-            <li key={detail}>{detail}</li>
-          ))}
-        </ul>
-      </details>
+      <ul className="entry-details">
+        {entry.details.map((detail) => (
+          <li key={detail}>{detail}</li>
+        ))}
+      </ul>
     </article>
   );
 }

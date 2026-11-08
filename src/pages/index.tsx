@@ -70,18 +70,18 @@ export default function Home() {
           </a>
         </p>
       </section>
-      <section className="prose-section" aria-labelledby="education-title">
-        <h2 id="education-title">Education</h2>
+      <section className="prose-section" aria-labelledby="experience-title">
+        <h2 id="experience-title">Work Experience</h2>
         <div className="timeline-list">
-          {education.map((entry) => (
+          {experience.map((entry) => (
             <TimelineCard key={entry.name} entry={entry} />
           ))}
         </div>
       </section>
-      <section className="prose-section" aria-labelledby="experience-title">
-        <h2 id="experience-title">Experience</h2>
+      <section className="prose-section" aria-labelledby="education-title">
+        <h2 id="education-title">Education</h2>
         <div className="timeline-list">
-          {experience.map((entry) => (
+          {education.map((entry) => (
             <TimelineCard key={entry.name} entry={entry} />
           ))}
         </div>

@@ -2,7 +2,7 @@
 
 A separate redesign of `../personal-website`, inspired by the supplied clean academic homepage screenshots. The original website and its Vercel project are untouched.
 
-The new site uses the original Next.js / React stack with a white background, blue links, Source Serif 4 headings (weight 600), a sticky profile sidebar, and subtle education / experience cards. The heading font is self-hosted in `src/fonts/`, with its SIL Open Font License included. The pages are Home, Projects (with category filtering), and Snapshots. Videos use native playback controls and locally generated poster images.
+The new site uses the original Next.js / React stack with a white background, blue links, Source Serif 4 headings (weight 600), a sticky profile sidebar, and subtle education / experience cards. Work Experience appears before Education, with all details visible directly. The heading font is self-hosted in `src/fonts/`, with its SIL Open Font License included. The pages are Home, Projects (a compact two-column video grid with category filtering), and Snapshots. Videos use native playback controls and locally generated poster images. Project previews fill their thumbnails, with a keyboard-accessible play button that loads the video on demand; playback shows the full video without cropping. The project grid becomes a single column on narrower screens.
 
 ## Run locally
 
@@ -83,6 +83,6 @@ Use the new project's generated domain to review the redesign. Moving an existin
 
 ## Migration notes
 
-The local content, photo, logos, project videos, and lifestyle videos were copied from the original website. Experience and education details are available in expandable cards. Original template metadata, placeholder testimonials, numeric skill ratings, and the unconnected contact form were replaced with personal metadata, a readable toolkit, and direct email / LinkedIn links.
+The local content, photo, logos, project videos, and lifestyle videos were copied from the original website. Experience and education details are displayed in full. Original template metadata, placeholder testimonials, numeric skill ratings, and the unconnected contact form were replaced with personal metadata, a readable toolkit, and direct email / LinkedIn links.
 
 No reference-site source code, biography, or personal assets were copied. `LICENSE` retains the original template's license notice.
