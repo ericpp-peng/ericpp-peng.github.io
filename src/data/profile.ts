@@ -28,7 +28,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/po-peng/",
   resume: assetPath("/resume/Po-Eric-Peng-Resume.pdf"),
   description:
-    "Po (Eric) Peng, embedded software engineer and M.S. ECE student at the University of Washington. UEFI/EDK II, embedded Linux, RTOS, and parallel computing.",
+    "Po (Eric) Peng, embedded software engineer and M.S. ECE student at the University of Washington. Kernel development, embedded systems, and hardware/software integration.",
 };
 
 export const education: ResumeEntry[] = [
