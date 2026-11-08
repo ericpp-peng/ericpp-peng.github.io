@@ -58,16 +58,6 @@ export default function Snapshots() {
               >
                 <source src={item.src} type="video/mp4" />
               </video>
-              <span className="project-play" aria-hidden="true">
-                <svg
-                  width="21"
-                  height="21"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M8 5v14l11-7Z" />
-                </svg>
-              </span>
             </button>
             <figcaption>
               <h3>{item.title}</h3>
