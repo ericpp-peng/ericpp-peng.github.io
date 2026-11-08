@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { ResumeEntry } from "../data/profile";
 import RichText from "./RichText";
+import ProductUseCase from "./ProductUseCase";
 
 export default function TimelineCard({ entry }: { entry: ResumeEntry }) {
   return (
@@ -53,15 +54,22 @@ export default function TimelineCard({ entry }: { entry: ResumeEntry }) {
           <section className="entry-section" key={section.title}>
             <div className="entry-section-heading">
               <h4>{section.title}</h4>
-              {section.image && (
-                <Image
-                  className="entry-product"
-                  src={section.image}
-                  alt=""
-                  width={38}
-                  height={38}
-                />
-              )}
+              {section.image &&
+                (section.useCase ? (
+                  <ProductUseCase
+                    productImage={section.image}
+                    productTitle={section.title}
+                    useCase={section.useCase}
+                  />
+                ) : (
+                  <Image
+                    className="entry-product"
+                    src={section.image}
+                    alt=""
+                    width={38}
+                    height={38}
+                  />
+                ))}
             </div>
             <ul className="entry-details">
               {section.items.map((item) => (

@@ -2,6 +2,15 @@
 // Older project demos and lifestyle media are retained below.
 import { assetPath } from "../lib/assetPath";
 
+export type UseCase = {
+  image: string;
+  title: string;
+  alt: string;
+  width: number;
+  height: number;
+  source?: { label: string; href: string };
+};
+
 export type ResumeEntry = {
   name: string;
   heading?: string;
@@ -12,7 +21,12 @@ export type ResumeEntry = {
   tags?: string[];
   skills?: { label: string; items: string }[];
   details?: string[];
-  sections?: { title: string; image?: string; items: string[] }[];
+  sections?: {
+    title: string;
+    image?: string;
+    useCase?: UseCase;
+    items: string[];
+  }[];
 };
 
 export const portraitSettings = { zoom: 1.05, horizontal: -30, vertical: 0 };
@@ -99,6 +113,17 @@ export const experience: ResumeEntry[] = [
       {
         title: "Protocol Gateways (Embedded Linux)",
         image: assetPath("/images/protocol_gateway.png"),
+        useCase: {
+          image: assetPath("/images/mgate_use_case.jpg"),
+          title: "Electric Power Industry",
+          alt: "Protocol gateway use case connecting SCADA, RTUs, meters, and relays in the electric power industry",
+          width: 3000,
+          height: 2028,
+          source: {
+            label: "ipc2u.com",
+            href: "https://ipc2u.com/news/product-news/mgate-5119-t-iec-61850-gateway-for-power-engineering/",
+          },
+        },
         items: [
           "**Led** cross-functional development of [MGate 5192](https://www.moxa.com/en/products/industrial-edge-connectivity/protocol-gateways/modbus-tcp-gateways/mgate-5192-series)’s **reusable Linux-based C protocol stack** and backend, implementing socket communication and packet handling to cut new-product integration from **3 months to 1 month**.",
           "**Built** a proprietary CAN protocol module from scratch and evaluated **multithreaded transmission strategies** across multiple ports, analyzing race conditions, mutex contention, and transaction-scanning overhead.",
@@ -110,6 +135,13 @@ export const experience: ResumeEntry[] = [
       {
         title: "Media Converters (MCUs)",
         image: assetPath("/images/media_converter.png"),
+        useCase: {
+          image: assetPath("/images/converter_use_case.svg"),
+          title: "Subway Station",
+          alt: "Media converter use case in a subway station",
+          width: 2926,
+          height: 787,
+        },
         items: [
           "**Led** MCU firmware development in **C** for an [Ethernet-to-fiber converter](https://www.moxa.com/en/products/industrial-network-infrastructure/ethernet-media-converters/ethernet-to-fiber-media-converters/imc-p21a-g2-series) from kickoff to market launch, coordinating with hardware, product, and SQA teams.",
           "**Resolved** customer communication issues on a [CAN-to-fiber converter](https://www.moxa.com/en/products/industrial-edge-connectivity/serial-converters/fieldbus-to-fiber-converters/icf-1171i-series) by tuning the CAN FD sample point and correcting **RAM configuration errors** affecting high-speed transmission.",

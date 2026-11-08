@@ -32,6 +32,8 @@ The build produces a self-contained static site in `out/`. There are no required
 
 The homepage retains the original “Open to 2027 full-time opportunities” statement.
 
+The Moxa protocol gateway and media converter icons show the original site's use case diagrams on hover or keyboard focus. Clicking opens the full diagram in a native dialog, also available by tapping on mobile. Escape, the close button, and the backdrop dismiss the dialog. The gateway diagram retains its original source credit, and both dialogs link to the full-size image.
+
 Snapshots uses uniform square video thumbnails with a cover crop for portrait and landscape media. All four previews autoplay muted and loop when the page opens. Opening a thumbnail also plays the full, uncropped video muted in a native dialog with keyboard / Escape support. The piano caption retains the original “Piano performance” and “Fantaisie-Impromptu, Op. 66 (Chopin)” wording. The homepage availability statement remains below the introduction and uses a pale purple background with bold UW-purple text.
 
 Current career content follows `../resume/applications/AMD-Embedded-Firmware-Development-Engineer-Austin-92403/AMD-Embedded-Firmware-Development-Engineer-Austin-92403.typ`. The original resume source is unchanged. The public resume PDF is compiled from that file into `public/resume/Po-Eric-Peng-Resume.pdf`, and the site's resume buttons point to that local PDF. Contact email is `ericpp.peng@gmail.com`, matching the resume. Earlier project videos and lifestyle media remain available as historical content.
