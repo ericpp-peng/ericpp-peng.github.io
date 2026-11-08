@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import Layout from "../components/Layout";
 import { snapshots } from "../data/profile";
@@ -46,13 +45,19 @@ export default function Snapshots() {
               aria-label={`Play ${item.title} video`}
               onClick={() => setSelected(item)}
             >
-              <Image
+              <video
                 className="snapshot-poster"
-                src={item.poster}
-                alt=""
-                width={960}
-                height={960}
-              />
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                poster={item.poster}
+                aria-hidden="true"
+                tabIndex={-1}
+              >
+                <source src={item.src} type="video/mp4" />
+              </video>
               <span className="project-play" aria-hidden="true">
                 <svg
                   width="21"
