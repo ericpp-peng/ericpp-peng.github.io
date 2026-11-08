@@ -96,6 +96,7 @@ export default function Snapshots() {
               ref={playerRef}
               controls
               autoPlay
+              muted
               playsInline
               poster={selected.poster}
               aria-label={selected.description}
