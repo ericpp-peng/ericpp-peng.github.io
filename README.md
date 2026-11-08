@@ -2,7 +2,7 @@
 
 A separate redesign of `../personal-website`, inspired by the supplied clean academic homepage screenshots. The original website and its Vercel project are untouched.
 
-The new site uses the original Next.js / React stack with a white background, blue links, serif headings, a sticky profile sidebar, and subtle education / experience cards. The pages are Home, Projects (with category filtering), and Snapshots. Videos use native playback controls and locally generated poster images.
+The new site uses the original Next.js / React stack with a white background, blue links, Source Serif 4 headings (weight 600), a sticky profile sidebar, and subtle education / experience cards. The heading font is self-hosted in `src/fonts/`, with its SIL Open Font License included. The pages are Home, Projects (with category filtering), and Snapshots. Videos use native playback controls and locally generated poster images.
 
 ## Run locally
 
@@ -40,13 +40,26 @@ With `npm run dev`, open **調整照片** below the profile photo to adjust zoom
 
 ## GitHub Pages deployment
 
-The test site is deployed from this repository independently of the existing root website:
+The primary website is deployed to the account's root GitHub Pages URL:
 
-- Website: https://ericpp-peng.github.io/personal-website-v2/
-- Repository: https://github.com/ericpp-peng/personal-website-v2
+- Website: https://ericpp-peng.github.io/
+- Repository: https://github.com/ericpp-peng/ericpp-peng.github.io
+- Active branch: `website-v2`
 - Workflow: `.github/workflows/pages.yml`
 
-Pushing to `main` automatically builds and deploys the website. Repository **Settings → Pages → Source** must be set to **GitHub Actions**. The workflow reads the site's path from GitHub Pages and sets `NEXT_PUBLIC_BASE_PATH` during the build so navigation, photos, posters, and videos work under `/personal-website-v2/`.
+This local `personal-website-v2` folder remains the working source. `origin` points to the root website repository, and `preview` points to the original test repository. Pushing `website-v2` to `origin` automatically builds and deploys the primary website. The root repository's previous `source` and `main` branches are preserved for rollback; the separate local `../ericpp-peng.github.io` checkout and its uncommitted changes are preserved.
+
+```sh
+git push
+```
+
+Repository **Settings → Pages → Source** must be set to **GitHub Actions**. The workflow reads the site's path from GitHub Pages and sets `NEXT_PUBLIC_BASE_PATH` during the build so navigation, photos, posters, and videos work at either the root or a project path.
+
+The earlier test site remains at https://ericpp-peng.github.io/personal-website-v2/. To update it separately:
+
+```sh
+git push preview HEAD:main
+```
 
 For a local build using the same path:
 

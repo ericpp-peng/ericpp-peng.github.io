@@ -53,7 +53,6 @@ export default function Layout({
         <div className="header-inner">
           <Link className="wordmark" href="/">
             {profile.shortName}
-            <span className="wordmark-dot">.</span>
           </Link>
           <nav aria-label="Main navigation">
             {nav.map((item) => (
