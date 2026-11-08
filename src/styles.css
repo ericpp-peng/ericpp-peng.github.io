@@ -287,17 +287,24 @@ nav {
 }
 .availability {
   display: flex;
-  gap: 8px;
+  gap: 9px;
   align-items: center;
-  font-size: 14px;
-  color: #606c7c;
-  padding-top: 2px;
+  width: fit-content;
+  max-width: 100%;
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.6;
+  color: #4b2e83;
+  background: var(--lavender);
+  border: 1px solid #e7dff0;
+  border-radius: 6px;
+  padding: 9px 12px;
 }
 .availability > span {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background: #45856d;
+  background: #6b5288;
   flex-shrink: 0;
 }
 .contact-section p {
@@ -671,13 +678,81 @@ nav {
 .snapshot {
   margin: 0;
 }
-.snapshot video {
+.snapshot-preview {
+  position: relative;
   display: block;
   width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: contain;
+  aspect-ratio: 1;
+  padding: 0;
+  border: 0;
+  color: white;
+  cursor: pointer;
+  overflow: hidden;
   background: #12161c;
   border-radius: 7px;
+}
+.snapshot-poster {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter 0.15s;
+}
+.snapshot-preview:hover .snapshot-poster {
+  filter: brightness(0.85);
+}
+.snapshot-dialog {
+  width: min(880px, calc(100vw - 32px));
+  max-width: none;
+  max-height: 90vh;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  background: white;
+  color: var(--text);
+}
+.snapshot-dialog::backdrop {
+  background: #101525c9;
+}
+.snapshot-viewer {
+  position: relative;
+}
+.snapshot-dialog video {
+  display: block;
+  width: 100%;
+  height: min(65vh, 600px);
+  object-fit: contain;
+  background: #12161c;
+}
+.snapshot-close {
+  position: absolute;
+  z-index: 1;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid #ffffff70;
+  border-radius: 50%;
+  background: #151b25bb;
+  color: white;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+.snapshot-caption {
+  padding: 14px 18px;
+}
+.snapshot-caption h3 {
+  margin: 0 0 3px;
+  font-size: 16px;
+}
+.snapshot-caption p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
 }
 .snapshot figcaption {
   padding: 12px 0;

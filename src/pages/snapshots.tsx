@@ -1,7 +1,36 @@
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import Layout from "../components/Layout";
 import { snapshots } from "../data/profile";
 
 export default function Snapshots() {
+  const [selected, setSelected] = useState<(typeof snapshots)[number] | null>(
+    null,
+  );
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const playerRef = useRef<HTMLVideoElement>(null);
+
+  function closeVideo() {
+    playerRef.current?.pause();
+    setSelected(null);
+  }
+
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!selected) {
+      dialog?.close();
+      return;
+    }
+    dialog?.showModal();
+    const player = playerRef.current;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      player?.pause();
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [selected]);
+
   return (
     <Layout title="Snapshots">
       <section className="page-intro">
@@ -11,16 +40,30 @@ export default function Snapshots() {
       <div className="snapshot-grid">
         {snapshots.map((item) => (
           <figure className="snapshot" key={item.title}>
-            <video
-              controls
-              playsInline
-              preload="none"
-              poster={item.poster}
-              aria-label={item.description}
+            <button
+              className="snapshot-preview"
+              type="button"
+              aria-label={`Play ${item.title} video`}
+              onClick={() => setSelected(item)}
             >
-              <source src={item.src} type="video/mp4" />
-              <a href={item.src}>Download video</a>
-            </video>
+              <Image
+                className="snapshot-poster"
+                src={item.poster}
+                alt=""
+                width={960}
+                height={960}
+              />
+              <span className="project-play" aria-hidden="true">
+                <svg
+                  width="21"
+                  height="21"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M8 5v14l11-7Z" />
+                </svg>
+              </span>
+            </button>
             <figcaption>
               <h3>{item.title}</h3>
               <p>{item.description}</p>
@@ -28,6 +71,45 @@ export default function Snapshots() {
           </figure>
         ))}
       </div>
+      <dialog
+        ref={dialogRef}
+        className="snapshot-dialog"
+        aria-labelledby="snapshot-video-title"
+        onCancel={closeVideo}
+        onClose={closeVideo}
+        onClick={(event) => {
+          if (event.target === event.currentTarget) closeVideo();
+        }}
+      >
+        {selected && (
+          <div className="snapshot-viewer">
+            <button
+              className="snapshot-close"
+              type="button"
+              aria-label="Close video"
+              onClick={closeVideo}
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+            <video
+              key={selected.src}
+              ref={playerRef}
+              controls
+              autoPlay
+              playsInline
+              poster={selected.poster}
+              aria-label={selected.description}
+            >
+              <source src={selected.src} type="video/mp4" />
+              <a href={selected.src}>Download video</a>
+            </video>
+            <div className="snapshot-caption">
+              <h3 id="snapshot-video-title">{selected.title}</h3>
+              <p>{selected.description}</p>
+            </div>
+          </div>
+        )}
+      </dialog>
     </Layout>
   );
 }

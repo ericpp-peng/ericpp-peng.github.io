@@ -241,8 +241,8 @@ export const snapshots = [
     poster: assetPath("/images/posters/badminton.jpg"),
   },
   {
-    title: "A little Chopin",
-    description: "Piano · Fantaisie-Impromptu, Op. 66",
+    title: "Piano performance",
+    description: "Fantaisie-Impromptu, Op. 66 (Chopin)",
     src: assetPath("/videos/lifestyle/20160524_piano.mp4"),
     poster: assetPath("/images/posters/piano.jpg"),
   },
