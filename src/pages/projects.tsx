@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import Layout from "../components/Layout";
-import { projects } from "../data/profile";
+import { projects, resumeProjects } from "../data/profile";
+import RichText from "../components/RichText";
 
 const categories = ["All", "Classroom", "Hackathon"] as const;
 
@@ -70,13 +71,16 @@ export default function Projects() {
   const visible = projects.filter(
     (project) => category === "All" || project.category === category,
   );
+  const selected = resumeProjects.filter(
+    (project) => category === "All" || project.category === category,
+  );
   return (
     <Layout title="Projects">
       <section className="page-intro">
         <h2>Projects</h2>
         <p>
-          A few things I’ve built, from classroom experiments to hackathon
-          ideas.
+          Firmware, parallel computing, and embedded sensing — followed by a few
+          earlier project demos.
         </p>
       </section>
       <div className="filters" aria-label="Filter projects">
@@ -92,13 +96,48 @@ export default function Projects() {
         ))}
       </div>
       <p className="sr-only" role="status">
-        {visible.length} projects shown
+        {selected.length + visible.length} projects shown
       </p>
-      <div className="project-list">
-        {visible.map((project) => (
-          <ProjectCard key={project.title} project={project} />
-        ))}
-      </div>
+      {selected.length > 0 && (
+        <section
+          className="resume-project-section"
+          aria-labelledby="selected-projects-title"
+        >
+          <h3 className="project-section-title" id="selected-projects-title">
+            Selected Projects
+          </h3>
+          <div className="resume-project-list">
+            {selected.map((project) => (
+              <article className="resume-project-card" key={project.title}>
+                <h4>{project.title}</h4>
+                <p className="resume-project-date">{project.date}</p>
+                <ul className="resume-project-details">
+                  {project.details.map((detail) => (
+                    <li key={detail}>
+                      <RichText text={detail} />
+                    </li>
+                  ))}
+                </ul>
+                <ul className="project-tags" aria-label="Technologies">
+                  {project.tags.map((tag) => (
+                    <li key={tag}>{tag}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+      <section aria-labelledby="project-demos-title">
+        <h3 className="project-section-title" id="project-demos-title">
+          Earlier Projects &amp; Demos
+        </h3>
+        <div className="project-list">
+          {visible.map((project) => (
+            <ProjectCard key={project.title} project={project} />
+          ))}
+        </div>
+      </section>
     </Layout>
   );
 }

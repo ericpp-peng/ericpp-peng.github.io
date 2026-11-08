@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { portraitSettings } from "../data/profile";
+import { portraitSettings, profile } from "../data/profile";
 import { assetPath } from "../lib/assetPath";
 
 const storageKey = "po-peng-portrait-v2";
@@ -66,7 +66,7 @@ export default function Portrait() {
         <Image
           className="portrait"
           src={assetPath("/images/profilepic-v2.jpg")}
-          alt="Po Peng (Eric)"
+          alt={profile.name}
           width={188}
           height={188}
           priority

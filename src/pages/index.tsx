@@ -1,7 +1,13 @@
 import Link from "next/link";
 import Layout from "../components/Layout";
 import TimelineCard from "../components/TimelineCard";
-import { education, experience, profile, skills } from "../data/profile";
+import {
+  education,
+  experience,
+  mentoring,
+  profile,
+  skills,
+} from "../data/profile";
 
 export default function Home() {
   return (
@@ -18,16 +24,17 @@ export default function Home() {
           >
             University of Washington
           </a>{" "}
-          in Seattle.
+          in Seattle, expecting to graduate in March 2027.
         </p>
         <p>
           I’m interested in{" "}
           <strong>
-            embedded systems, firmware, and the software that connects hardware
-            to the world.
+            UEFI/EDK II, embedded Linux, RTOS, and hardware-aware software.
           </strong>{" "}
-          I enjoy working across the stack, from low-level debugging and
-          communication protocols to building reliable tools for real products.
+          At Qualcomm, I developed the first UEFI prototype on a new
+          architecture and contributed to open-sourcing downstream EDK II
+          firmware. My work included UART integration, timer interrupts,
+          boot-flow debugging, and aligning CI/CD with upstream GitHub checks.
         </p>
         <p>
           Previously, I spent over three years at{" "}
@@ -38,9 +45,11 @@ export default function Home() {
           >
             Moxa
           </a>
-          , developing Linux-based industrial protocol gateways and MCU-based
-          media converters. My work ranged from modularizing protocol stacks to
-          improving product testing and troubleshooting.
+          , developing embedded Linux protocol gateways and MCU firmware for
+          media converters. More recently, my{" "}
+          <Link href="/projects/">projects</Link> have explored parallel
+          computing on a 2,000-core RISC-V system and an ESP32-based industrial
+          sensing system.
         </p>
         <p className="availability">
           <span aria-hidden="true" />
@@ -82,6 +91,14 @@ export default function Home() {
         <h2 id="education-title">Education</h2>
         <div className="timeline-list">
           {education.map((entry) => (
+            <TimelineCard key={entry.name} entry={entry} />
+          ))}
+        </div>
+      </section>
+      <section className="prose-section" aria-labelledby="mentoring-title">
+        <h2 id="mentoring-title">Leadership &amp; Mentoring</h2>
+        <div className="timeline-list">
+          {mentoring.map((entry) => (
             <TimelineCard key={entry.name} entry={entry} />
           ))}
         </div>

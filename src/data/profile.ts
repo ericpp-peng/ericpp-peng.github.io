@@ -1,94 +1,185 @@
-// Content migrated from ../personal-website. Keep personal content in this file.
+// Resume content follows the AMD Embedded Firmware Development Engineer .typ resume.
+// Older project demos and lifestyle media are retained below.
 import { assetPath } from "../lib/assetPath";
 
-export const portraitSettings = {
-  zoom: 1.05,
-  horizontal: -30,
-  vertical: 0,
+export type ResumeEntry = {
+  name: string;
+  heading?: string;
+  subtitle: string;
+  date: string;
+  location?: string;
+  logo: string;
+  tags?: string[];
+  skills?: { label: string; items: string }[];
+  details?: string[];
+  sections?: { title: string; image?: string; items: string[] }[];
 };
 
+export const portraitSettings = { zoom: 1.05, horizontal: -30, vertical: 0 };
+
 export const profile = {
-  name: "Po Peng (Eric)",
+  name: "Po (Eric) Peng",
   shortName: "Po Peng",
   role: "Embedded Software Engineer",
   affiliation: "M.S. ECE · University of Washington",
   location: "Seattle, Washington",
-  email: "ericpp@uw.edu",
-  personalEmail: "ericpp.peng@gmail.com",
+  email: "ericpp.peng@gmail.com",
   github: "https://github.com/ericpp-peng",
   linkedin: "https://www.linkedin.com/in/po-peng/",
-  resume:
-    "https://drive.google.com/file/d/1zsb_pGQGMrj_uBWThKAIpDqY7sorhUAK/view?usp=sharing",
+  resume: assetPath("/resume/Po-Eric-Peng-Resume.pdf"),
   description:
-    "Po Peng (Eric), an embedded software engineer and M.S. ECE student at the University of Washington. Embedded systems, firmware, and life beyond the screen.",
+    "Po (Eric) Peng, embedded software engineer and M.S. ECE student at the University of Washington. UEFI/EDK II, embedded Linux, RTOS, and parallel computing.",
 };
 
-export const education = [
+export const education: ResumeEntry[] = [
   {
     name: "University of Washington",
-    subtitle: "M.S. in Electrical and Computer Engineering",
-    date: "Expected June 2027",
+    subtitle: "M.S. in Electrical and Computer Engineering | GPA: 3.94 / 4.0",
+    date: "Expected March 2027",
+    location: "Seattle, WA",
     logo: assetPath("/images/UW-logo.svg"),
-    details: ["GPA: 3.75 / 4.0"],
+    tags: [
+      "Parallel Computer Architecture",
+      "GPU Parallel Computing",
+      "Digital Systems Design with FPGAs",
+    ],
   },
   {
     name: "National Taiwan University of Science and Technology",
-    subtitle: "M.S. in Electrical Engineering",
-    date: "June 2020",
+    subtitle: "M.S. in Electrical Engineering | GPA: 3.92 / 4.3",
+    date: "August 2020",
+    location: "Taipei, Taiwan",
     logo: assetPath("/images/NTUST_logo.svg"),
-    details: [
-      "GPA: 3.92 / 4.3",
-      "KDD Cup: built Python workflows for preprocessing, feature engineering, and model training on 500,000+ data points to predict transportation preferences. Achieved a weighted F1-score of 0.6884, close to the first-place score of approximately 0.7.",
-      "Thesis: Analysis of Call Admission Control Schemes for Secondary Users in CRN. Proposed an access mechanism combining spectrum leasing, channel aggregation, and hand-offs to improve spectrum utilization, lower delay, and increase throughput.",
-    ],
   },
   {
     name: "Chang Gung University",
-    subtitle: "B.S. in Electrical Engineering",
+    subtitle: "B.S. in Electrical Engineering | GPA: 3.7 / 4.0",
     date: "June 2018",
+    location: "Taoyuan, Taiwan",
     logo: assetPath("/images/CGU_logo.svg"),
-    details: [
-      "GPA: 3.7 / 4.0",
-      "Intelligent Curtain System: first place in the communications field at the final project exhibition.",
-      "Created an illumination-aware curtain system using SmartServer, Zigbee sensors, and Power Line Communication. Designed and soldered the control PCB using D flip-flops, BJTs, and RLC components, and programmed Zigbee firmware to store temperature and brightness data.",
-    ],
   },
 ];
 
-export const experience = [
+export const experience: ResumeEntry[] = [
   {
     name: "Qualcomm",
-    subtitle: "Embedded Software Engineer · Internship",
+    heading: "Embedded Software Engineer",
+    subtitle: "Qualcomm · Internship",
     date: "June – September 2026",
+    location: "San Diego, CA",
     logo: assetPath("/images/qualcomm.svg"),
-    status: "",
+    skills: [
+      { label: "Languages", items: "C" },
+      {
+        label: "Technologies & Tools",
+        items: "UEFI, EDK II, UART, timer interrupts, GitHub CI/CD",
+      },
+    ],
     details: [
-      "Focus areas: embedded software, firmware development, and system-level debugging.",
+      "**Developed** the **first UEFI prototype** on a new architecture using **C**, integrating platform-specific **UART** support, implementing **timer interrupt** support, and debugging boot flow to reach the UEFI interactive shell.",
+      "**Contributed** to open-sourcing downstream **EDK II** firmware by aligning **CI/CD** with 100% of upstream **GitHub** checks and resolving all resulting failures.",
     ],
   },
   {
     name: "Moxa",
-    subtitle: "Embedded Software Engineer · Full-time",
+    heading: "Embedded Software Engineer",
+    subtitle: "Moxa · R&D",
     date: "June 2021 – October 2024",
+    location: "Taipei, Taiwan",
     logo: assetPath("/images/MOXA-logo.svg"),
-    status: "",
+    skills: [
+      { label: "Languages", items: "C" },
+      {
+        label: "Technologies & Tools",
+        items:
+          "Embedded Linux, TCP/IP, Ethernet, CAN, IPC, GitLab CI/CD, Valgrind, Coverity",
+      },
+    ],
+    sections: [
+      {
+        title: "Protocol Gateways (Embedded Linux)",
+        image: assetPath("/images/protocol_gateway.png"),
+        items: [
+          "**Led** cross-functional development of [MGate 5192](https://www.moxa.com/en/products/industrial-edge-connectivity/protocol-gateways/modbus-tcp-gateways/mgate-5192-series)’s **reusable Linux-based C protocol stack** and backend, implementing socket communication and packet handling to cut new-product integration from **3 months to 1 month**.",
+          "**Built** a proprietary CAN protocol module from scratch and evaluated **multithreaded transmission strategies** across multiple ports, analyzing race conditions, mutex contention, and transaction-scanning overhead.",
+          "**Improved** an MGate 5000 RESTful library using **IPC**, reducing API development time by **20%**.",
+          "**Designed** an SD card backup module and resolved firmware issues through **Linux kernel analysis**.",
+          "**Established** automated testing pipelines with Valgrind and Coverity analysis in **GitLab CI/CD**.",
+        ],
+      },
+      {
+        title: "Media Converters (MCUs)",
+        image: assetPath("/images/media_converter.png"),
+        items: [
+          "**Led** MCU firmware development in **C** for an [Ethernet-to-fiber converter](https://www.moxa.com/en/products/industrial-network-infrastructure/ethernet-media-converters/ethernet-to-fiber-media-converters/imc-p21a-g2-series) from kickoff to market launch, coordinating with hardware, product, and SQA teams.",
+          "**Resolved** customer communication issues on a [CAN-to-fiber converter](https://www.moxa.com/en/products/industrial-edge-connectivity/serial-converters/fieldbus-to-fiber-converters/icf-1171i-series) by tuning the CAN FD sample point and correcting **RAM configuration errors** affecting high-speed transmission.",
+        ],
+      },
+    ],
+  },
+];
+
+export const mentoring: ResumeEntry[] = [
+  {
+    name: "University of Washington",
+    heading: "FIRST Robotics Mentor",
+    subtitle: "University of Washington",
+    date: "September – December 2025",
+    location: "Seattle, WA",
+    logo: assetPath("/images/UW-logo.svg"),
     details: [
-      "Worked on Linux-based protocol gateways and MCU-based media converters. Protocol gateway products achieved USD 3M/year revenue with 10% year-over-year growth (2021–2024).",
-      "Led modularization of the IEC 60870-5-101/104 protocol stack for MGate 5192, cutting integration time for new products by over 50%.",
-      "Built a full-stack serial configuration and troubleshooting solution for MGate 5216, reducing debugging time between software R&D and clients by over 90%.",
-      "Improved the RESTful library for the MGate 5000 series with an IPC-based design, reducing API maintenance and development time by 10%.",
-      "Developed unit tests and Valgrind scripts integrated with GitLab CI, reaching 90% test coverage and detecting memory issues early.",
-      "Co-developed the SD card backup module with the Linux kernel team and resolved issues through kernel source analysis.",
-      "Led IMC-P21A-G2 Ethernet-to-fiber software development from project initiation to market launch with product, hardware, and SQA teams.",
-      "Resolved sample point and RAM configuration issues for Japanese clients using the ICF-1171I CAN-to-fiber converter.",
+      "**Mentored** students in electronics, sensors, wiring, and software framework design, emphasizing **PID control**, Java programming, and computer vision.",
     ],
   },
 ];
 
 export const skills = [
-  { label: "Languages", items: "C, Shell, Python, Verilog, HTML, JavaScript" },
-  { label: "Systems", items: "Linux, TCP/IP, I2C, UART, SQLite, Makefile" },
-  { label: "Tools", items: "GitLab CI/CD, Docker, Valgrind, Jira" },
+  { label: "Languages", items: "C/C++, Python, Bash, Verilog" },
+  {
+    label: "Embedded Systems",
+    items:
+      "Embedded Linux, RTOS (μC/OS-II, Zephyr), MCU firmware, ARM, UEFI/EDK II, bootloaders",
+  },
+  {
+    label: "Interfaces & Protocols",
+    items: "I2C, UART, TCP/IP, Ethernet, CAN, Modbus",
+  },
+  {
+    label: "Development Tools",
+    items:
+      "Git, Makefile, GitLab CI/CD, GitHub, TRACE32, Valgrind, Coverity, Docker",
+  },
+];
+
+export const resumeProjects = [
+  {
+    title: "Parallel Computing on a 2,000-Core RISC-V System",
+    date: "January – March 2026",
+    category: "Classroom",
+    details: [
+      "Optimized **C++** kernels through architecture-aware parallelization and latency hiding.",
+      "Managed explicit data movement and synchronization without cache coherence, using **cycle-accurate simulation** to identify compute, memory, and NoC bottlenecks.",
+    ],
+    tags: ["C++", "RISC-V", "Parallel computing"],
+  },
+  {
+    title: "Embedded Sensing Capstone — UW SEAL",
+    date: "January – June 2026",
+    category: "Classroom",
+    details: [
+      "Built an **ESP32** sensing system with on-device signal processing, ML inference, and **LoRa** communication for industrial gas leak detection.",
+    ],
+    tags: ["ESP32", "Signal processing", "ML inference", "LoRa"],
+  },
+  {
+    title: "RTOS Implementation",
+    date: "September 2018 – January 2019",
+    category: "Classroom",
+    details: [
+      "Modified the **μC/OS-II RTOS** kernel to implement and evaluate scheduling algorithms.",
+    ],
+    tags: ["μC/OS-II", "Scheduling"],
+  },
 ];
 
 export const projects = [
