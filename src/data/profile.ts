@@ -61,8 +61,7 @@ export const experience = [
     subtitle: "Embedded Software Engineer · Internship",
     date: "June – September 2026",
     logo: assetPath("/images/qualcomm.svg"),
-    // The original describes this role as incoming. Do not infer completion.
-    status: "Incoming",
+    status: "",
     details: [
       "Focus areas: embedded software, firmware development, and system-level debugging.",
     ],

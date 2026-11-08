@@ -30,7 +30,7 @@ The build produces a self-contained static site in `out/`. There are no required
 - `public/images/`: profile photo, institution logos, and video posters.
 - `public/videos/`: original project and lifestyle videos.
 
-The original site's Qualcomm entry is still marked **Incoming**. Its June–September 2026 dates have passed, but completion has not been assumed. Update `experience` in `profile.ts` when the actual status is confirmed. The homepage retains the original “Open to 2027 full-time opportunities” statement.
+The homepage retains the original “Open to 2027 full-time opportunities” statement.
 
 The email link now matches the visible UW address, `ericpp@uw.edu`; the personal email from the original remains available in the data file.
 
