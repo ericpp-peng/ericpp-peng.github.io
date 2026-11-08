@@ -56,6 +56,17 @@ export default function Home() {
           piano, diving, or out in the snow. A few moments from life along the
           way live in my <Link href="/snapshots/">snapshots</Link>.
         </p>
+        <p>
+          I also share everyday moments on{" "}
+          <a href={profile.instagram} target="_blank" rel="noopener noreferrer">
+            Instagram
+          </a>{" "}
+          and{" "}
+          <a href={profile.youtube} target="_blank" rel="noopener noreferrer">
+            YouTube
+          </a>
+          .
+        </p>
       </section>
       <section
         id="contact"

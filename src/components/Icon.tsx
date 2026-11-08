@@ -1,12 +1,32 @@
 import type { SVGProps } from "react";
 
 export type IconName =
-  "github" | "linkedin" | "mail" | "resume" | "pin" | "arrow";
+  | "github"
+  | "linkedin"
+  | "mail"
+  | "resume"
+  | "pin"
+  | "arrow"
+  | "instagram"
+  | "youtube";
 export function Icon({
   name,
   ...props
 }: SVGProps<SVGSVGElement> & { name: IconName }) {
   const paths: Record<IconName, React.ReactNode> = {
+    instagram: (
+      <>
+        <rect x="3" y="3" width="18" height="18" rx="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
+      </>
+    ),
+    youtube: (
+      <>
+        <rect x="2" y="5" width="20" height="14" rx="4" />
+        <path d="m10 9 5 3-5 3Z" fill="currentColor" stroke="none" />
+      </>
+    ),
     github: (
       <path
         fill="currentColor"

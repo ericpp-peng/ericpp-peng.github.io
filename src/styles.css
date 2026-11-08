@@ -240,6 +240,9 @@ nav {
   justify-content: center;
   gap: 12px;
 }
+.personal-socials {
+  margin-top: 10px;
+}
 .social-link {
   display: flex;
   align-items: center;

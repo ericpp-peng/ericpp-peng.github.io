@@ -18,6 +18,10 @@ const social: { label: string; href: string; icon: IconName }[] = [
   { label: "Email", href: `mailto:${profile.email}`, icon: "mail" },
   { label: "Resume", href: profile.resume, icon: "resume" },
 ];
+const personalSocial: { label: string; href: string; icon: IconName }[] = [
+  { label: "Instagram", href: profile.instagram, icon: "instagram" },
+  { label: "YouTube", href: profile.youtube, icon: "youtube" },
+];
 
 export default function Layout({
   children,
@@ -102,6 +106,25 @@ export default function Layout({
                 {...(item.href.startsWith("https:")
                   ? { target: "_blank", rel: "noopener noreferrer" }
                   : {})}
+              >
+                <Icon name={item.icon} />
+              </a>
+            ))}
+          </div>
+          <div
+            className="socials personal-socials"
+            role="group"
+            aria-label="Life updates"
+          >
+            {personalSocial.map((item) => (
+              <a
+                key={item.label}
+                className="social-link"
+                href={item.href}
+                aria-label={item.label}
+                title={item.label}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Icon name={item.icon} />
               </a>

@@ -40,6 +40,8 @@ export const profile = {
   email: "ericpp.peng@gmail.com",
   github: "https://github.com/ericpp-peng",
   linkedin: "https://www.linkedin.com/in/po-peng/",
+  instagram: "https://www.instagram.com/itsericpeng/",
+  youtube: "https://www.youtube.com/@ItsEricPeng",
   resume: assetPath("/resume/Po-Eric-Peng-Resume.pdf"),
   description:
     "Po (Eric) Peng, embedded software engineer and M.S. ECE student at the University of Washington. Kernel development, embedded systems, and hardware/software integration.",
