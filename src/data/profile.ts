@@ -93,7 +93,7 @@ export const experience: ResumeEntry[] = [
     ],
     details: [
       "**Developed** the **first UEFI prototype** on a new architecture using **C**, integrating platform-specific **UART** support, implementing **timer interrupt** support, and debugging boot flow to reach the UEFI interactive shell.",
-      "**Contributed** to open-sourcing downstream **EDK II** firmware by aligning **CI/CD** with 100% of upstream **GitHub** checks and resolving all resulting failures.",
+      "**Contributed** to open-sourcing downstream **EDK II** firmware by adapting upstream validation checks for internal **CI/CD** and resolving integration issues.",
     ],
   },
   {
