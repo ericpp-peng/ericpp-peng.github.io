@@ -22,6 +22,10 @@ npm run build
 
 The build produces a self-contained static site in `out/`. There are no required environment variables or external font dependencies.
 
+## Visitor analytics (GA4)
+
+Optional GA4 integration uses `NEXT_PUBLIC_GA_MEASUREMENT_ID`, configured as a GitHub Actions repository variable. It remains disabled until a valid ID is supplied and the website is rebuilt. Development mode never loads analytics. Enhanced measurement handles page views, outbound link clicks, and PDF link clicks; explicit video opening events exclude autoplaying previews. See [the setup and reporting guide](docs/analytics.md) for the Google account steps, activation, and report details.
+
 ## Edit content
 
 - `src/data/profile.ts`: identity, contact links, education, experience, mentoring, skills, current resume projects, earlier project demos, and snapshots.

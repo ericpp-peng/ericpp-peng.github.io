@@ -3,6 +3,7 @@ import Image from "next/image";
 import Layout from "../components/Layout";
 import { projects, resumeProjects } from "../data/profile";
 import RichText from "../components/RichText";
+import { trackVideoOpen } from "../lib/analytics";
 
 const categories = ["All", "Classroom", "Hackathon"] as const;
 
@@ -29,7 +30,10 @@ function ProjectCard({ project }: { project: (typeof projects)[number] }) {
             type="button"
             className="project-preview"
             aria-label={`Play ${project.title} video`}
-            onClick={() => setHasStarted(true)}
+            onClick={() => {
+              trackVideoOpen("project_video", project.title);
+              setHasStarted(true);
+            }}
           >
             <Image
               className="project-poster"

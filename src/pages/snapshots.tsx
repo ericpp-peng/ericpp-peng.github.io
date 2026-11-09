@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Layout from "../components/Layout";
 import { snapshots } from "../data/profile";
+import { trackVideoOpen } from "../lib/analytics";
 
 export default function Snapshots() {
   const [selected, setSelected] = useState<(typeof snapshots)[number] | null>(
@@ -43,7 +44,10 @@ export default function Snapshots() {
               className="snapshot-preview"
               type="button"
               aria-label={`Play ${item.title} video`}
-              onClick={() => setSelected(item)}
+              onClick={() => {
+                trackVideoOpen("snapshot", item.title);
+                setSelected(item);
+              }}
             >
               <video
                 className="snapshot-poster"
